@@ -12,13 +12,13 @@ app.get("/", (req, res)=>{
 app.post('/incCount', (req, res)=>{
     const data = fs.readFileSync('count.txt', {encoding:'utf8', flag:'r'})
     console.log(parseInt(data)+1);
-    const ans = parseInt(data)+1
+    const ans = (parseInt(data)+1).toString()
     fs.writeFileSync("count.txt", ans);
     res.json({calls: ans})
 })
 
 app.put('reset', (req, res)=>{
-    fs.writeFileSync("count.txt", 0);
+    fs.writeFileSync("count.txt", "0");
     res.json({calls: 0})
 })
 
